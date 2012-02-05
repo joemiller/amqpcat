@@ -6,20 +6,16 @@ require "amqpcat/version"
 Gem::Specification.new do |s|
   s.name     = "amqpcat"
   s.version  = Amqpcat::VERSION.dup
-  s.date     = "2012-01-29"
-  s.summary  = "Netcat-like tool for reading and writing messages over AMQP"
+  s.date     = "2012-02-05"
+  s.summary  = "Netcat-like tool for reading and writing messages to AMQP message brokers"
   s.email    = "joeym@joeym.net"
   s.homepage = "https://github.com/joemiller/amqpcat"
   s.authors  = ['Joe Miller']
   
   s.description = <<-EOF
 A netcat inspired command line tool for reading and writing simple
-messages to AMQP based message queues such as RabbitMQ.
+messages to AMQP based message brokers such as RabbitMQ.
 EOF
-  
-  dependencies = [
-    [:runtime,      "bunny", ">= 0.7.0"]
-  ]
   
   s.files         = Dir['**/*']
   s.test_files    = Dir['test/**/*'] + Dir['spec/**/*']
@@ -31,11 +27,6 @@ EOF
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.specification_version = 3 if s.respond_to? :specification_version
   
-  dependencies.each do |type, name, version|
-    if s.respond_to?("add_#{type}_dependency")
-      s.send("add_#{type}_dependency", name, version)
-    else
-      s.add_dependency(name, version)
-    end
-  end
+  s.add_dependency("bunny", "0.7.8")
+
 end
