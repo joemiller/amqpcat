@@ -1,0 +1,15 @@
+GIT
+  remote: git://github.com/ruby-amqp/bunny.git
+  revision: f2deea037057169014b0f7a67682baf6a9d70c30
+  specs:
+    bunny (0.8.0.pre1)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bunny!
