@@ -7,8 +7,7 @@ from the command line or from shell scripts. It is implemented with the
 `bunny` Ruby gem.
 
 Install
-=======
-
+-------
 Install from gem:
 
     sudo gem install amqpcat
@@ -20,10 +19,9 @@ Install from github:
     gem install amqpcat-0.0.1.gem
 
 Example Usage
-=============
-
-1:1 Messaging
 -------------
+
+### 1:1 Messaging
 
 Start a consumer. This will block until a message is received.
 
@@ -35,8 +33,8 @@ Publish a message:
 
 The consumer should output the message and exit.
 
-1:N (fanout / pubsub)
---------------------
+### 1:N (fanout / pubsub)
+
 See the `examples/test_fanout.sh` script for another example of fanout
 messaging.
 
@@ -56,18 +54,18 @@ Published a message to the exchange:
 Both of the consumers should print out the message we published.
 
 Options
-=======
+-------
 Run `amqpcat -h` to get detailed help output.
 
-One-message -vs- Continuous message mode
-----------------------------------------
+### One-message -vs- Continuous message mode
+
 By default, when publishing, `amqpcat` will use the newline character to 
 distinguish between messages to publish. However, you can send a single
 message by using the `--once` option. This can be useful if you need
 to send a single message that contains new lines.
 
 SSL Support
-===========
+-----------
 SSL support has been written but is not tested nor is it fully working
 at this time (v0.0.1).
  
@@ -76,7 +74,7 @@ under newer versions of the Bunny gem (0.8+) or if bunny is installed
 from the master branch on github.
 
 Contributing
-===========
+------------
 1. Fork it.
 2. Create a branch (`git checkout -b my_feature`)
 3. Commit your changes (`git commit -am "did some stuff"`)
@@ -84,12 +82,12 @@ Contributing
 5. Create an with a link to your branch
 
 Author
-======
+------
 
 Joe Miller - http://twitter.com/miller_joe || https://github.com/joemiller
 
 License
-=======
+-------
 
     Author:: Joe Miller (<joeym@joeym.net>)
     Copyright:: Copyright (c) 2012 Joe Miller
