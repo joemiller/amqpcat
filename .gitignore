@@ -1,3 +1,5 @@
 Attic
 examples/client_cert.pem
 examples/client_key.pem
+*.gem
+.rvmrc
