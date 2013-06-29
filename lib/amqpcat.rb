@@ -23,7 +23,7 @@ class Amqpcat
   end
 
   def publish(msg)
-    exchange.publish(msg)
+    exchange.publish(msg, :routing_key => @opts[:routing_key])
   end
 
   def message_count
