@@ -79,7 +79,7 @@ class Amqpcat
     else
       @amqp.queue(@opts[:name], options)
     end
-    @queue.bind(exchange)
+    @queue.bind(exchange, :routing_key => @opts[:routing_key])
     @queue
   end
 end

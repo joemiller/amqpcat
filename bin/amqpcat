@@ -22,7 +22,7 @@ Options:
 EOS
 
   opts.on('-h', '--help', 'Display usage') { puts opts; exit 0 }
-  
+
   options[:mode] = nil
   opts.on('-c', '--consumer', 'Read data from the queue specified by -n and write to STDOUT') do
     options[:mode] = :consumer
@@ -39,42 +39,46 @@ EOS
   opts.on('-r', '--ssl-cert FILE', 'Use SSL cert in FILE.') do |f|
     options[:ssl_cert] = f
   end
-  
+
   options[:verify_ssl] = true
   opts.on('y', '--[no-]verify-ssl', 'Verify server SSL certficiate. (Default: true)') do |y|
     options[:verify_ssl] = y
   end
-  
+
   options[:prefix] = ''
   opts.on('-s', '--string STRING', "prefix output with STRING") do |s|
      options[:prefix] = s
    end
-  
+
   options[:once] = false
   opts.on('-o', '--once', "Read/Write one message then exit. (Default: false)") do
     options[:once] = true
   end
-  
+
   options[:name] = 'amqpcat.default'
   opts.on('-n', '--name NAME', "Queue and Exchange NAME to use. (Default: amqpcat.default)") do |name|
     options[:name] = name
   end
-  
+
   options[:type] = 'direct'
   opts.on('-t', '--type TYPE', "Exchange type: direct, fanout. (Default: direct)") do |type|
     options[:type] = type
   end
-  
+
   options[:durable] = true
   opts.on('--[no-]durable', "Enable/Disable durable messages. (Default: durable=true)") do |d|
     options[:durable] = d
   end
-  
+
   options[:auto_delete] = false
   opts.on('--[no-]auto_delete', "Enable/Disable auto_delete. (Default: auto_delete=false)") do |d|
     options[:auto_delete] = d
   end
-  
+
+  opts.on('--routing-key', "Bind to the exchange with a routing key.") do |k|
+    options[:routing_key] = k
+  end
+
 end
 optparse.parse!
 
