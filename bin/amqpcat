@@ -75,7 +75,7 @@ EOS
     options[:auto_delete] = d
   end
 
-  opts.on('--routing-key', "Bind to the exchange with a routing key.") do |k|
+  opts.on('--routing-key KEY', "Bind or publish to the exchange with a routing key.") do |k|
     options[:routing_key] = k
   end
 
