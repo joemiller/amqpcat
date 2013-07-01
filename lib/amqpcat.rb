@@ -12,6 +12,7 @@ class Amqpcat
       :name => DEFAULT_QUEUE,
       :durable => true,
       :auto_delete => false,
+      :persistent => true,
       :ssl_key => nil,
       :ssl_cert => nil,
       :verify_ssl => true,
@@ -23,7 +24,7 @@ class Amqpcat
   end
 
   def publish(msg)
-    exchange.publish(msg)
+    exchange.publish(msg, :persistent => @opts[:persistent], :key => @opts[:routing_key])
   end
 
   def message_count
@@ -79,7 +80,7 @@ class Amqpcat
     else
       @amqp.queue(@opts[:name], options)
     end
-    @queue.bind(exchange)
+    @queue.bind(exchange, :routing_key => @opts[:routing_key])
     @queue
   end
 end
